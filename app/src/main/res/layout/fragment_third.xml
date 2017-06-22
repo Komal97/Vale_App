@@ -1,0 +1,52 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#fff"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context="com.example.acer.vale_app.ThirdFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:padding="10dp"
+        android:layout_marginTop="35dp"
+        android:layout_height="497dp"
+        >
+        <TextView
+            android:id="@+id/tvname2"
+            android:gravity="center"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="25dp"
+            style="@style/tvstyle"
+            android:textColor="#000"
+            android:text="ABC"
+            />
+
+        <ImageView
+            android:id="@+id/imageset"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            style="@style/tvstyle"
+            android:src="@drawable/images"/>
+
+        <TextView
+            android:id="@+id/tvnumber"
+            android:layout_width="match_parent"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textSize="20dp"
+            style="@style/tvstyle"
+            android:textColor="#000"
+            android:text="Contact Number: +918120675432" />
+    </LinearLayout>
+
+
+</RelativeLayout>

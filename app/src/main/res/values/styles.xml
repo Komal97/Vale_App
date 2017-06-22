@@ -1,0 +1,28 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">#000</item>
+        <item name="colorAccent">#ea8d32</item>
+    </style>
+
+    <style name="tvstyle">
+        <item name="android:background">@drawable/textbox_boundary</item>
+    </style>
+
+    <style name="btnstyle">
+        <item name="android:background">@drawable/button_boundary</item>
+    </style>
+
+    <style name="btnstyle2">
+        <item name="android:background">@drawable/button_boundary2</item>
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+
+</resources>

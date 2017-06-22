@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/activity_main2"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:background="#fff"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.example.acer.vale_app.Main2Activity">
+<android.support.v7.widget.CardView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/cv"
+    app:cardElevation="10dp"
+    app:cardBackgroundColor="#fff"
+    app:cardCornerRadius="5dp"
+    app:contentPadding="10dp"
+    >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:orientation="horizontal">
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/ib"
+            android:background="#fff"
+            app:srcCompat="?attr/actionModeCloseDrawable"
+            android:scaleType="fitCenter" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/tvNo"
+            android:layout_marginLeft="15dp"
+            android:textSize="18dp"
+            android:textColor="#ea8d32"
+            android:text="Enter Your Mobile Number"/>
+
+    </LinearLayout>
+</android.support.v7.widget.CardView>
+<TextView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_below="@id/cv"
+    android:layout_marginTop="25dp"
+    android:gravity="center"
+    android:layout_marginLeft="50dp"
+    android:layout_marginRight="50dp"
+    android:layout_marginBottom="25dp"
+    android:id="@+id/tv3"
+    android:textSize="22dp"
+    android:textColor="#000"
+    android:text="Let's check if you are already registered with us !"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/tvstyle"
+        android:textSize="20dp"
+        android:paddingLeft="10dp"
+        android:id="@+id/et"
+        android:text="+91"
+        android:layout_below="@id/tv3"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_marginTop="20sp"
+        android:padding="10sp"
+        android:id="@+id/LinearLayout"
+        android:layout_below="@id/et"
+        style="@style/tvstyle"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_marginTop="5dp"
+            android:id="@+id/cb"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/et"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#000"
+            android:gravity="center"
+            android:id="@+id/tv4"
+            android:textSize="18dp"
+            android:text="By continuing, I Agree to Vale's Terms and Conditions"/>
+    </LinearLayout>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnLogin"
+        android:layout_marginTop="130dp"
+        android:layout_below="@id/LinearLayout"
+        style="@style/btnstyle"
+        android:textSize="20dp"
+        android:textColor="#fff"
+        android:text="Login !"
+        android:layout_centerHorizontal="true"/>
+
+
+</RelativeLayout>

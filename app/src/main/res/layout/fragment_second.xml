@@ -1,0 +1,94 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#fff"
+    tools:context="com.example.acer.vale_app.SecondFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/tvstyle"
+        android:id="@+id/ll2"
+        android:orientation="horizontal">
+        <ImageButton
+            android:layout_marginTop="4dp"
+            android:layout_marginLeft="10dp"
+            android:scaleType="centerCrop"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:background="#fff"
+            android:id="@+id/ib2"
+            android:src="@drawable/status1"
+            />
+
+        <TextView
+            android:id="@+id/tvcheck"
+            android:text="Check Status"
+            android:textSize="30dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginLeft="30dp"
+            android:textColor="#ea8d32"
+            android:padding="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+
+    </LinearLayout>
+
+    <Button
+        android:text="PickUp Completed"
+        android:textColor="#fff"
+        android:textSize="25dp"
+        android:id="@+id/btnpick"
+        android:gravity="center"
+        android:layout_marginTop="60dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ll2"
+        style="@style/btnstyle2"
+        />
+
+
+    <Button
+        android:text="Parked Successfully"
+        android:textColor="#fff"
+        android:textSize="25dp"
+        android:id="@+id/btnparked"
+        android:gravity="center"
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btnpick"
+        style="@style/btnstyle2"
+        />
+
+
+    <Button
+        android:text="Check Drop Raised"
+        android:textColor="#fff"
+        android:textSize="25dp"
+        android:id="@+id/btnCheckDrop"
+        android:gravity="center"
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btnparked"
+        style="@style/btnstyle2"
+        />
+
+    <Button
+        android:text="Drop Completed"
+        android:textColor="#fff"
+        android:textSize="25dp"
+        android:id="@+id/btndrop"
+        android:gravity="center"
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btnCheckDrop"
+        style="@style/btnstyle2"
+        />
+</RelativeLayout>
