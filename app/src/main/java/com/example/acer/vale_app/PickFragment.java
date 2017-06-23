@@ -20,12 +20,12 @@ import com.google.android.gms.maps.model.MarkerOptions;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class BlankFragment extends Fragment implements OnMapReadyCallback {
+public class PickFragment extends Fragment implements OnMapReadyCallback{
     private GoogleMap mGoogleMap;
     private MapView mMapView;
     private View mView;
 
-    public BlankFragment() {
+    public PickFragment() {
         // Required empty public constructor
     }
 
@@ -34,9 +34,10 @@ public class BlankFragment extends Fragment implements OnMapReadyCallback {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        mView= inflater.inflate(R.layout.fragment_blank, container, false);
+        mView= inflater.inflate(R.layout.fragment_pick, container, false);
         return mView;
     }
+
     @Override
     public void onViewCreated(View view,Bundle savedInstanceState)
     {
@@ -54,11 +55,16 @@ public class BlankFragment extends Fragment implements OnMapReadyCallback {
     @Override
     public void onMapReady(GoogleMap googleMap) {
         MapsInitializer.initialize(getContext());
-        mGoogleMap=googleMap;
-        googleMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
-        googleMap.addMarker(new MarkerOptions().position(new LatLng(28.63320831,77.22294813)).title("CP"));
 
-        CameraPosition cp=CameraPosition.builder().target(new LatLng(28.63320831,77.22294813)).zoom(16).bearing(0).tilt(45).build();
+        mGoogleMap = googleMap;
+        googleMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
+        Bundle bundle=getArguments();
+        Float longitude=bundle.getFloat("Longitude");
+        Float latitude=bundle.getFloat("Latitude");
+
+        googleMap.addMarker(new MarkerOptions().position(new LatLng(latitude,longitude)).title("CP"));
+
+        CameraPosition cp = CameraPosition.builder().target(new LatLng(latitude,longitude)).zoom(16).bearing(0).tilt(45).build();
         googleMap.moveCamera(CameraUpdateFactory.newCameraPosition(cp));
     }
 
