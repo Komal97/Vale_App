@@ -36,7 +36,7 @@ public class Main4Activity extends AppCompatActivity  {
         btnDest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               Intent i1=new Intent(Main4Activity.this,Pick_UpActivity.class);
+               Intent i1=new Intent(Main4Activity.this,MapsActivity.class);
                 startActivity(i1);
 
 

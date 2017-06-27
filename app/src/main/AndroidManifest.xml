@@ -1,52 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.acer.vale_app">
+package="com.example.acer.vale_app">
 
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
-    <application
-        android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
-        android:supportsRtl="true"
-        android:theme="@style/AppTheme">
-        <activity
-            android:name=".MainActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".Main2Activity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".Main3Activity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".Splash"
-            android:screenOrientation="portrait">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+<application android:allowBackup="true" android:icon="@mipmap/ic_launcher" android:label="@string/app_name"
+    android:supportsRtl="true" android:theme="@style/AppTheme">
+    <activity android:name=".MainActivity" android:screenOrientation="portrait" />
+    <activity android:name=".Main2Activity" android:screenOrientation="portrait" />
+    <activity android:name=".Main3Activity" android:screenOrientation="portrait" />
+    <activity android:name=".Splash" android:screenOrientation="portrait">
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-        <activity
-            android:name=".TabbedActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".Main4Activity"
-            android:screenOrientation="portrait" />
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
+    </activity>
+    <activity android:name=".TabbedActivity" android:screenOrientation="portrait" />
+    <activity android:name=".Main4Activity" android:screenOrientation="portrait" />
 
-        <meta-data
-            android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyBb2EA-u5441LezxyBIXoX-bmAvA08Idmo"/>
-           <!-- android:value="AIzaSyCUf3TJsi7zDGwtX27CdAokZg84BvOtirA" -->
+    <meta-data android:name="com.google.android.geo.API_KEY"
+        android:value="AIzaSyBb2EA-u5441LezxyBIXoX-bmAvA08Idmo" />
+    <!-- android:value="AIzaSyCUf3TJsi7zDGwtX27CdAokZg84BvOtirA" -->
 
 
-        <activity android:name=".Pick_UpActivity" >
+    <activity android:name="com.example.acer.vale_app.MapsActivity" android:label="@string/title_activity_maps">
 
-        </activity>
-        <activity android:name=".DeliveredActivity"></activity>
-    </application>
+    </activity>
+
+    <activity android:name=".DeliveredActivity"></activity>
+</application>
+
+
+
+
 
 </manifest>
