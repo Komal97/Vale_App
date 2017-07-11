@@ -76,6 +76,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                     Geocoder geocoder = new Geocoder(getApplicationContext());
                     String result = null;
                     try {
+
                        /* List<Address> addressList=geocoder.getFromLocation(latitude,longitude,1);
                         StringBuilder str=new StringBuilder();
                                 str.append(addressList.get(0).getAddressLine(0)+",").append(addressList.get(0).getLocality())
@@ -106,6 +107,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                             mMap.addMarker(new MarkerOptions().position(latLng2).title("Netaji Subhash Place metro station"));
                             mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng2, 16.0f));
                         }
+
                     } catch (IOException e) {
                         e.printStackTrace();
                     }

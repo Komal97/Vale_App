@@ -15,7 +15,9 @@ package="com.example.acer.vale_app">
 
     </activity>
     <activity android:name=".TabbedActivity" android:screenOrientation="portrait" />
-    <activity android:name=".Main4Activity" android:screenOrientation="portrait" />
+    <activity android:name=".Main4Activity" android:screenOrientation="portrait" >
+
+    </activity>
 
     <meta-data android:name="com.google.android.geo.API_KEY"
         android:value="AIzaSyBb2EA-u5441LezxyBIXoX-bmAvA08Idmo" />

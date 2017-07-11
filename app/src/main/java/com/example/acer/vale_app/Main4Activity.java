@@ -1,5 +1,6 @@
 package com.example.acer.vale_app;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -16,8 +17,9 @@ import com.google.android.gms.maps.GoogleMap;
  */
 
 public class Main4Activity extends AppCompatActivity  {
-    private Button btnDest;
+    private Button btnDest,btnpick;
     private GoogleMap mMap;
+    Dialog otpdialog;
     //private MapView mMapView;
 
     @Override
@@ -25,7 +27,18 @@ public class Main4Activity extends AppCompatActivity  {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_forth);
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment,new BlankFragment());
+        otpdialog=new Dialog(Main4Activity.this);
+        otpdialog.setTitle("Otp Authentication");
+        otpdialog.setContentView(R.layout.otp_dialog);
+        btnpick= (Button) otpdialog.findViewById(R.id.btnpickup2);
+        btnpick.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i1 = new Intent(Main4Activity.this, MapsActivity.class);
+                startActivity(i1);
 
+            }
+        });
         FragmentManager mgr=getSupportFragmentManager();
         FragmentTransaction trans=mgr.beginTransaction();
         trans.replace(R.id.fragment,new BlankFragment());
@@ -36,8 +49,9 @@ public class Main4Activity extends AppCompatActivity  {
         btnDest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               Intent i1=new Intent(Main4Activity.this,MapsActivity.class);
-                startActivity(i1);
+              // Intent i1=new Intent(Main4Activity.this,MapsActivity.class);
+                //startActivity(i1);
+                otpdialog.show();
 
 
             }
