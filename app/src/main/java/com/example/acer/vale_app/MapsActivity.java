@@ -52,7 +52,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
        mapFragment.getMapAsync(this);
 
         locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
-        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+       if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             // TODO: Consider calling
             //    ActivityCompat#requestPermissions
             // here to request the missing permissions, and then overriding
@@ -67,24 +67,51 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 0, new LocationListener() {
                 @Override
                 public void onLocationChanged(Location location) {
-                    double latitude=location.getLatitude();
-                    double longitude=location.getLongitude();
+                    double latitude = location.getLatitude();
+                    double longitude = location.getLongitude();
 
-                    LatLng latLng=new LatLng(latitude,longitude);
+                    LatLng latLng = new LatLng(latitude, longitude);
+                    LatLng latLng2 = new LatLng(28.6961009, 77.1527008);
 
-                    Geocoder geocoder=new Geocoder(getApplicationContext());
+                    Geocoder geocoder = new Geocoder(getApplicationContext());
+                    String result = null;
                     try {
-                        List<Address> addressList=geocoder.getFromLocation(latitude,longitude,1);
-                        String str=addressList.get(0).getLocality()+",";
-                        str +=addressList.get(0).getCountryName();
-                        mMap.addMarker(new MarkerOptions().position(latLng).title(str));
-                        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng,10.2f));
+                       /* List<Address> addressList=geocoder.getFromLocation(latitude,longitude,1);
+                        StringBuilder str=new StringBuilder();
+                                str.append(addressList.get(0).getAddressLine(0)+",").append(addressList.get(0).getLocality())
+                                        .append(addressList.get(0).getCountryName());
+                                String str1=str.toString();
+
+                        mMap.addMarker(new MarkerOptions().position(latLng).title(str1));
+                        mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng,16.0f));
+
+                        mMap.addMarker(new MarkerOptions().position(latLng2).title("Netaji Subhash Place metro station"));
+                        mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng2,16.0f));
+*/
+                        List<Address> addressList = geocoder.getFromLocation(latitude, longitude, 1);
+                        if (addressList != null && addressList.size() > 0) {
+                            Address address = addressList.get(0);
+                            StringBuilder sb = new StringBuilder();
+                            for (int i = 0; i < address.getMaxAddressLineIndex(); i++) {
+                                sb.append(address.getAddressLine(i)).append("\n");
+                            }
+                            sb.append(address.getLocality()).append("\n");
+                            sb.append(address.getPostalCode()).append("\n");
+                            sb.append(address.getCountryName());
+                            result = sb.toString();
+
+                            mMap.addMarker(new MarkerOptions().position(latLng).title(result));
+                            mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 16.0f));
+
+                            mMap.addMarker(new MarkerOptions().position(latLng2).title("Netaji Subhash Place metro station"));
+                            mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng2, 16.0f));
+                        }
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
                 }
 
-                @Override
+                    @Override
                 public void onStatusChanged(String s, int i, Bundle bundle) {
 
                 }
@@ -105,26 +132,39 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, new LocationListener() {
                 @Override
                 public void onLocationChanged(Location location) {
-                    double latitude=location.getLatitude();
-                    double longitude=location.getLongitude();
+                    double latitude = location.getLatitude();
+                    double longitude = location.getLongitude();
 
-                    LatLng latLng=new LatLng(latitude,longitude);
+                    LatLng latLng = new LatLng(latitude, longitude);
+                    LatLng latLng2 = new LatLng(28.6961009, 77.1527008);
 
-                    Geocoder geocoder=new Geocoder(getApplicationContext());
+                    Geocoder geocoder = new Geocoder(getApplicationContext());
+                    String result = null;
                     try {
-                        List<Address> addressList=geocoder.getFromLocation(latitude,longitude,1);
-                        String str=addressList.get(0).getLocality()+",";
-                        str +=addressList.get(0).getCountryName();
-                        mMap.addMarker(new MarkerOptions().position(latLng).title(str));
-                        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng,70.2f));
-                       // CameraPosition cp=CameraPosition.builder().target(new LatLng(28.63320831,77.22294813)).zoom(16).bearing(0).tilt(45).build();
+                        List<Address> addressList = geocoder.getFromLocation(latitude, longitude, 1);
+                        if (addressList != null && addressList.size() > 0) {
+                            Address address = addressList.get(0);
+                            StringBuilder sb = new StringBuilder();
+                            for (int i = 0; i < address.getMaxAddressLineIndex(); i++) {
+                                sb.append(address.getAddressLine(i)).append("\n");
+                            }
+                            sb.append(address.getLocality()).append("\n");
+                            sb.append(address.getPostalCode()).append("\n");
+                            sb.append(address.getCountryName());
+                            result = sb.toString();
+                            mMap.addMarker(new MarkerOptions().position(latLng).title(result));
+                            mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 16.0f));
 
+                            mMap.addMarker(new MarkerOptions().position(latLng2).title("Netaji Subhash Place metro station"));
+                            mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng2, 16.0f));
+
+                        }
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
                 }
 
-                @Override
+                    @Override
                 public void onStatusChanged(String s, int i, Bundle bundle) {
 
                 }

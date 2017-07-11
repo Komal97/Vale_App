@@ -12,11 +12,7 @@ package="com.example.acer.vale_app">
     <activity android:name=".Main2Activity" android:screenOrientation="portrait" />
     <activity android:name=".Main3Activity" android:screenOrientation="portrait" />
     <activity android:name=".Splash" android:screenOrientation="portrait">
-        <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
 
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter>
     </activity>
     <activity android:name=".TabbedActivity" android:screenOrientation="portrait" />
     <activity android:name=".Main4Activity" android:screenOrientation="portrait" />
@@ -27,7 +23,11 @@ package="com.example.acer.vale_app">
 
 
     <activity android:name="com.example.acer.vale_app.MapsActivity" android:label="@string/title_activity_maps">
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
 
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
     </activity>
 
     <activity android:name=".DeliveredActivity"></activity>
