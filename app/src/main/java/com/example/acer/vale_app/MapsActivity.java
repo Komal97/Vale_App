@@ -75,10 +75,23 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                     Geocoder geocoder=new Geocoder(getApplicationContext());
                     try {
                         List<Address> addressList=geocoder.getFromLocation(latitude,longitude,1);
-                        String str=addressList.get(0).getLocality()+",";
-                        str +=addressList.get(0).getCountryName();
-                        mMap.addMarker(new MarkerOptions().position(latLng).title(str));
-                        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng,10.2f));
+                        String address;
+                        StringBuilder str=new StringBuilder();
+                        str.append(addressList.get(0).getAddressLine(0));
+                        str.append(addressList.get(0).getAddressLine(1));
+                        str.append(addressList.get(0).getAddressLine(2));
+                        str.append(addressList.get(0).getCountryName());
+                        address=str.toString();
+
+                        //String str=addressList.get(0).getAddressLine(0)+",";
+                        //str +=addressList.get(0).getCountryName();
+
+                        mMap.addMarker(new MarkerOptions().position(latLng).title(address));
+
+                       mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng,10.2f));
+                        //mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng,18));
+                       // mMap.setMapType(GoogleMap.MAP_TYPE_HYBRID);
+
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
