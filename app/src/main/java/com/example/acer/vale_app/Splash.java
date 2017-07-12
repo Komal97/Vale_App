@@ -37,12 +37,14 @@ public class Splash extends AppCompatActivity {
         } catch (Exception ex) {
         }
         Animation animation = AnimationUtils.loadAnimation(Splash.this, R.anim.movedown);
+        iv.startAnimation(animation);
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
 
             if (checkSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION) + checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) + checkSelfPermission(Manifest.permission.ACCESS_COARSE_LOCATION) + checkSelfPermission(Manifest.permission.INTERNET) + checkSelfPermission(Manifest.permission.ACCESS_NETWORK_STATE) == PackageManager.PERMISSION_GRANTED) {
                 if (!gps_enabled) {
                     // notify user
+
                     AlertDialog.Builder dialog = new AlertDialog.Builder(Splash.this);
                     dialog.setTitle("Improve location accurancy?");
                     dialog.setMessage("This app wants to change your device setting:");
@@ -81,6 +83,7 @@ public class Splash extends AppCompatActivity {
                 requestPermissions(new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_NETWORK_STATE, Manifest.permission.INTERNET, Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.ACCESS_COARSE_LOCATION}, PERMISSIONS_MULTIPLE_REQUEST);
                 if (!gps_enabled) {
                     // notify user
+
                     AlertDialog.Builder dialog = new AlertDialog.Builder(Splash.this);
                     dialog.setTitle("Improve location accurancy?");
                     dialog.setMessage("This app wants to change your device setting:");
@@ -116,41 +119,45 @@ public class Splash extends AppCompatActivity {
 
             }
         }
-        if (!gps_enabled) {
-            // notify user
-            AlertDialog.Builder dialog = new AlertDialog.Builder(Splash.this);
-            dialog.setTitle("Improve location accurancy?");
-            dialog.setMessage("This app wants to change your device setting:");
-            dialog.setNegativeButton("DENY", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface paramDialogInterface, int paramInt) {
-                    // TODO Auto-generated method stub
-                    finish();
-                }
-            });
-            dialog.setPositiveButton("ALLOW", new DialogInterface.OnClickListener() {
 
-                @Override
-                public void onClick(DialogInterface paramDialogInterface, int paramInt) {
-                    Intent myIntent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
-                    startActivity(myIntent);
+        else {
+            if (!gps_enabled) {
+                // notify user
 
-                    flag = true;
+                AlertDialog.Builder dialog = new AlertDialog.Builder(Splash.this);
+                dialog.setTitle("Improve location accurancy?");
+                dialog.setMessage("This app wants to change your device setting:");
+                dialog.setNegativeButton("DENY", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface paramDialogInterface, int paramInt) {
+                        // TODO Auto-generated method stub
+                        finish();
+                    }
+                });
+                dialog.setPositiveButton("ALLOW", new DialogInterface.OnClickListener() {
 
-                    //startActivityForResult(myIntent, 1);
+                    @Override
+                    public void onClick(DialogInterface paramDialogInterface, int paramInt) {
+                        Intent myIntent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
+                        startActivity(myIntent);
+
+                        flag = true;
+
+                        //startActivityForResult(myIntent, 1);
 
 
-                }
-            });
-            dialog.show();
-        } else {
-            iv.startAnimation(animation);
-            new Timer().schedule(new TimerTask() {
-                public void run() {
-                    startActivity(new Intent(Splash.this, LoginActivity.class));
-                }
-            }, 3000);
+                    }
+                });
+                dialog.show();
+            } else {
+                iv.startAnimation(animation);
+                new Timer().schedule(new TimerTask() {
+                    public void run() {
+                        startActivity(new Intent(Splash.this, LoginActivity.class));
+                    }
+                }, 3000);
 
+            }
         }
 
 
@@ -168,26 +175,3 @@ public class Splash extends AppCompatActivity {
         }
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
