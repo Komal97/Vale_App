@@ -1,8 +1,8 @@
 package com.example.acer.vale_app;
 
 import android.content.Intent;
-import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -11,39 +11,39 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
-public class Main2Activity extends AppCompatActivity {
+public class OtpActivity extends AppCompatActivity {
     private ImageButton ib;
     private TextView text;
     private EditText et;
     private CheckBox cb;
     private Button btnLogin;
-    int count=0;
+    private int count=0;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main2);
-        ib= (ImageButton) findViewById(R.id.ib);
-        text= (TextView) findViewById(R.id.tvNo);
+        setContentView(R.layout.activity_otp);
+        ib= (ImageButton) findViewById(R.id.ib2);
+        text= (TextView) findViewById(R.id.tvOtp);
         et= (EditText) findViewById(R.id.et);
-        cb= (CheckBox) findViewById(R.id.cb);
-        btnLogin= (Button) findViewById(R.id.btnLogin);
-        et.setSelection(et.getText().length());
-        cb.setChecked(false);
+        cb= (CheckBox) findViewById(R.id.cb2);
+        btnLogin= (Button) findViewById(R.id.btnLogin2);
+
         btnLogin.setEnabled(false);
         ib.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i1=new Intent(Main2Activity.this,MainActivity.class);
+                Intent i1=new Intent(OtpActivity.this,Login2Activity.class);
                 startActivity(i1);
             }
         });
         text.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i1=new Intent(Main2Activity.this,MainActivity.class);
-                startActivity(i1);
+                Intent i1=new Intent(OtpActivity.this,Login2Activity.class);
+                startActivityForResult(i1,20);
+
             }
         });
 
@@ -58,27 +58,23 @@ public class Main2Activity extends AppCompatActivity {
                 }
                 else
                     btnLogin.setEnabled(true);
-
             }
         });
 
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i2=new Intent(Main2Activity.this,Main3Activity.class);
-                startActivity(i2);
+              Intent i1=new Intent(OtpActivity.this,TabbedActivity.class);
+                startActivity(i1);
             }
         });
 
 
-
-
     }
-
     @Override
     public void onBackPressed()
     {
-        Intent i1=new Intent(Main2Activity.this,MainActivity.class);
+        Intent i1=new Intent(OtpActivity.this,Login2Activity.class);
         startActivity(i1);
     }
 }

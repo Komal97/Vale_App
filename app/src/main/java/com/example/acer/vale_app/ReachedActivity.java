@@ -7,18 +7,18 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
 import com.google.android.gms.maps.GoogleMap;
-import android.text.TextWatcher;
-import android.text.Editable;
 /**
  * Created by ACER on 21-Jun-17.
  */
 
-public class Main4Activity extends AppCompatActivity  {
+public class ReachedActivity extends AppCompatActivity  {
     private Button btnDest,btnpick;
     private GoogleMap mMap;
     Dialog otpdialog;
@@ -28,9 +28,9 @@ public class Main4Activity extends AppCompatActivity  {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_forth);
-        getSupportFragmentManager().beginTransaction().replace(R.id.fragment,new BlankFragment());
-        otpdialog=new Dialog(Main4Activity.this);
+        setContentView(R.layout.activity_deliver_reach);
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragment,new FrameLayoutFragment());
+        otpdialog=new Dialog(ReachedActivity.this);
 
         otpdialog.setTitle("Otp Authentication");
 
@@ -67,14 +67,14 @@ public class Main4Activity extends AppCompatActivity  {
             @Override
             public void onClick(View v) {
                 otpdialog.cancel();
-                Intent i1 = new Intent(Main4Activity.this, MapsActivity.class);
+                Intent i1 = new Intent(ReachedActivity.this, ParkedActivity.class);
                 startActivity(i1);
 
             }
         });
         FragmentManager mgr=getSupportFragmentManager();
         FragmentTransaction trans=mgr.beginTransaction();
-        trans.replace(R.id.fragment,new BlankFragment());
+        trans.replace(R.id.fragment,new FrameLayoutFragment());
         trans.commit();
         btnDest= (Button) findViewById(R.id.btndest);
 
@@ -82,7 +82,7 @@ public class Main4Activity extends AppCompatActivity  {
         btnDest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-              // Intent i1=new Intent(Main4Activity.this,MapsActivity.class);
+              // Intent i1=new Intent(ReachedActivity.this,ParkedActivity.class);
                 //startActivity(i1);
                 otpdialog.show();
 

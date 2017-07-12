@@ -29,7 +29,7 @@ public class TabbedActivity extends AppCompatActivity {
         btnAccept.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i1=new Intent(TabbedActivity.this,Main4Activity.class);
+                Intent i1=new Intent(TabbedActivity.this,ReachedActivity.class);
                 startActivity(i1);
             }
         });*/
@@ -63,13 +63,13 @@ public class TabbedActivity extends AppCompatActivity {
                 switch (position)
                 {
                     case 0:
-                        f=new FirstFragment();
+                        f=new HomeFragment();
                         break;
                     case 1:
-                        f=new SecondFragment();
+                        f=new TripsFragment();
                         break;
                     case 2:
-                        f=new ThirdFragment();
+                        f=new MyAccountFragment();
                         break;
 
                 }
@@ -145,7 +145,7 @@ public class TabbedActivity extends AppCompatActivity {
     @Override
     public void onBackPressed()
     {
-        Intent i1=new Intent(TabbedActivity.this,Main3Activity.class);
+        Intent i1=new Intent(TabbedActivity.this,OtpActivity.class);
         startActivity(i1);
     }
 

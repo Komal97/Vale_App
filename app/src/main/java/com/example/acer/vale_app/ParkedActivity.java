@@ -24,7 +24,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import java.io.IOException;
 import java.util.List;
 
-public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
+public class ParkedActivity extends FragmentActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
     private Button pick;
@@ -34,14 +34,14 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_map);
+        setContentView(R.layout.activity_parked);
 
         pick= (Button) findViewById(R.id.btnpickup);
 
         pick.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i1 = new Intent(MapsActivity.this, DeliveredActivity.class);
+                Intent i1 = new Intent(ParkedActivity.this, DeliveredActivity.class);
                 startActivity(i1);
 
             }
