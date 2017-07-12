@@ -9,9 +9,11 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 
 import com.google.android.gms.maps.GoogleMap;
-
+import android.text.TextWatcher;
+import android.text.Editable;
 /**
  * Created by ACER on 21-Jun-17.
  */
@@ -20,6 +22,7 @@ public class Main4Activity extends AppCompatActivity  {
     private Button btnDest,btnpick;
     private GoogleMap mMap;
     Dialog otpdialog;
+    EditText etotp;
     //private MapView mMapView;
 
     @Override
@@ -28,12 +31,42 @@ public class Main4Activity extends AppCompatActivity  {
         setContentView(R.layout.activity_forth);
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment,new BlankFragment());
         otpdialog=new Dialog(Main4Activity.this);
+
         otpdialog.setTitle("Otp Authentication");
+
         otpdialog.setContentView(R.layout.otp_dialog);
         btnpick= (Button) otpdialog.findViewById(R.id.btnpickup2);
+        etotp=(EditText)otpdialog.findViewById(R.id.et1);
+
+        btnpick.setEnabled(false);
+
+        TextWatcher tw=new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                if(s.length()==0){
+                    btnpick.setEnabled(false);
+                }
+                else
+                    btnpick.setEnabled(true);
+            }
+
+        };
+        etotp.addTextChangedListener(tw);
+
         btnpick.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                otpdialog.cancel();
                 Intent i1 = new Intent(Main4Activity.this, MapsActivity.class);
                 startActivity(i1);
 
