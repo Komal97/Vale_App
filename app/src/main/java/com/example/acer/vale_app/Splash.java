@@ -34,11 +34,11 @@ public class Splash extends AppCompatActivity {
         if(Build.VERSION.SDK_INT>=Build.VERSION_CODES.M)
         {
 
-            if(checkSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION)+checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE)+checkSelfPermission(Manifest.permission.ACCESS_COARSE_LOCATION)+checkSelfPermission(Manifest.permission.INTERNET)+checkSelfPermission(Manifest.permission.ACCESS_NETWORK_STATE)== PackageManager.PERMISSION_GRANTED);
+            if(checkSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION)+checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE)+checkSelfPermission(Manifest.permission.ACCESS_COARSE_LOCATION)+checkSelfPermission(Manifest.permission.ACCESS_NETWORK_STATE)== PackageManager.PERMISSION_GRANTED);
 
             else {
 
-                requestPermissions(new String[]{Manifest.permission.ACCESS_FINE_LOCATION,Manifest.permission.ACCESS_NETWORK_STATE,Manifest.permission.INTERNET,Manifest.permission.WRITE_EXTERNAL_STORAGE,Manifest.permission.ACCESS_COARSE_LOCATION}, PERMISSIONS_MULTIPLE_REQUEST);
+                requestPermissions(new String[]{Manifest.permission.ACCESS_FINE_LOCATION,Manifest.permission.ACCESS_NETWORK_STATE,Manifest.permission.WRITE_EXTERNAL_STORAGE,Manifest.permission.ACCESS_COARSE_LOCATION}, PERMISSIONS_MULTIPLE_REQUEST);
 //               new Timer().schedule(new TimerTask(){
 //                    public void run() {
 //                        startActivity(new Intent(Splash.this, LoginActivity.class));
@@ -58,40 +58,33 @@ public class Splash extends AppCompatActivity {
             AlertDialog.Builder dialog = new AlertDialog.Builder(Splash.this);
             dialog.setTitle("Improve location accurancy?");
             dialog.setMessage("This app wants to change your device setting:");
-            dialog.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            dialog.setPositiveButton("DENY", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface paramDialogInterface, int paramInt) {
                     // TODO Auto-generated method stub
-                    Intent myIntent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
-                    startActivityForResult(myIntent, 1);
-                    //get gps
+                    finish();
                 }
             });
-            dialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            dialog.setNegativeButton("ALLOW", new DialogInterface.OnClickListener() {
 
                 @Override
                 public void onClick(DialogInterface paramDialogInterface, int paramInt) {
-                    finish();
+
+                    Intent myIntent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
+                    startActivityForResult(myIntent, 1);
                 }
             });
             dialog.show();
         }
-        else{
-            Intent i1=new Intent(Splash.this,LoginActivity.class);
-            startActivity(i1);
-        }
-
-
-
-
-
+//        else{
+//            Intent i1=new Intent(Splash.this,LoginActivity.class);
+//            startActivity(i1);
+//        }
 
 //            if (getIntent().getBooleanExtra("EXIT", false))
 //        {
 //            finish();
 //        }
-
-
 
     }
 
