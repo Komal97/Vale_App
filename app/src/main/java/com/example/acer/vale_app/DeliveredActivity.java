@@ -22,7 +22,7 @@ public class DeliveredActivity extends AppCompatActivity implements OnMapReadyCa
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_deliver_reach);
+        setContentView(R.layout.activity_deliver);
 
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment,new FrameLayoutFragment());
 

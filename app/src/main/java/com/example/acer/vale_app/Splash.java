@@ -39,6 +39,7 @@ public class Splash extends AppCompatActivity {
         Animation animation = AnimationUtils.loadAnimation(Splash.this, R.anim.movedown);
 
 
+
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
 
             if (checkSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION) + checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) + checkSelfPermission(Manifest.permission.ACCESS_COARSE_LOCATION) + checkSelfPermission(Manifest.permission.INTERNET) + checkSelfPermission(Manifest.permission.ACCESS_NETWORK_STATE) == PackageManager.PERMISSION_GRANTED) {
@@ -113,39 +114,12 @@ public class Splash extends AppCompatActivity {
                         }
                     }, 3000);
 
-                }
 
-//               new Timer().schedule(new TimerTask(){
-//                    public void run() {
-//                        startActivity(new Intent(Splash.this, LoginActivity.class));
-//                    }
-//                }, 3000);
+                }
             }
         }
-
-
-
-
-
-//            if (getIntent().getBooleanExtra("EXIT", false))
-//        {
-//            finish();
-//        }
-
-
     }
 
-    /*@Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == 1 && resultCode == RESULT_OK) {
-            Intent i1 = new Intent(Splash.this, LoginActivity.class);
-            startActivity(i1);
-        } else {
-
-        }
-
-
-    }*/
 
     @Override
     protected void onResume() {
