@@ -22,9 +22,8 @@ package="com.example.acer.vale_app">
         </intent-filter>
     </activity>
     <activity android:name=".TabbedActivity" android:screenOrientation="portrait" />
-    <activity android:name=".ReachedActivity" android:screenOrientation="portrait" >
-
-    </activity>
+    <activity android:name=".ReachedActivity" android:screenOrientation="portrait" />
+        >
 
     <meta-data android:name="com.google.android.geo.API_KEY"
         android:value="AIzaSyBb2EA-u5441LezxyBIXoX-bmAvA08Idmo" />

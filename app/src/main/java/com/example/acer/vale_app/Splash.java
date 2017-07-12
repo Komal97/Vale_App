@@ -21,7 +21,7 @@ import java.util.TimerTask;
 public class Splash extends AppCompatActivity {
 
     private ImageView iv;
-    private boolean flag=false;
+    private boolean flag = false;
     public static final int PERMISSIONS_MULTIPLE_REQUEST = 123;
 
 
@@ -37,7 +37,6 @@ public class Splash extends AppCompatActivity {
         } catch (Exception ex) {
         }
         Animation animation = AnimationUtils.loadAnimation(Splash.this, R.anim.movedown);
-
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
 
@@ -60,7 +59,7 @@ public class Splash extends AppCompatActivity {
                         public void onClick(DialogInterface paramDialogInterface, int paramInt) {
                             Intent myIntent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
                             startActivity(myIntent);
-                            flag=true;
+                            flag = true;
                             //startActivityForResult(myIntent, 1);
 
 
@@ -98,7 +97,7 @@ public class Splash extends AppCompatActivity {
                         public void onClick(DialogInterface paramDialogInterface, int paramInt) {
                             Intent myIntent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
                             startActivity(myIntent);
-                            flag=true;
+                            flag = true;
                             //startActivityForResult(myIntent, 1);
 
 
@@ -135,7 +134,9 @@ public class Splash extends AppCompatActivity {
                 public void onClick(DialogInterface paramDialogInterface, int paramInt) {
                     Intent myIntent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
                     startActivity(myIntent);
-                    flag=true;
+
+                    flag = true;
+
                     //startActivityForResult(myIntent, 1);
 
 
@@ -152,6 +153,7 @@ public class Splash extends AppCompatActivity {
 
         }
 
+
     }
 
 
@@ -159,13 +161,14 @@ public class Splash extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        if(flag){
+        if (flag) {
             Intent i1 = new Intent(Splash.this, LoginActivity.class);
             startActivity(i1);
             finish();
         }
     }
 }
+
 
 
 
