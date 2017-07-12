@@ -145,7 +145,10 @@ public class Splash extends AppCompatActivity {
             iv.startAnimation(animation);
             new Timer().schedule(new TimerTask() {
                 public void run() {
-                    startActivity(new Intent(Splash.this, LoginActivity.class));
+                    Intent i1 = new Intent(Splash.this, LoginActivity.class);
+                    i1.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                    startActivity(i1);
+                    finish();
                 }
             }, 3000);
 
@@ -161,6 +164,7 @@ public class Splash extends AppCompatActivity {
         super.onResume();
         if (flag) {
             Intent i1 = new Intent(Splash.this, LoginActivity.class);
+            i1.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
             startActivity(i1);
             finish();
         }
