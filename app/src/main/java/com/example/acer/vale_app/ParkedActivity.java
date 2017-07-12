@@ -34,14 +34,14 @@ public class ParkedActivity extends FragmentActivity implements OnMapReadyCallba
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_parked);
+        setContentView(R.layout.activity_parked_reach);
 
         pick= (Button) findViewById(R.id.btnpickup);
 
         pick.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i1 = new Intent(ParkedActivity.this, DeliveredActivity.class);
+                Intent i1 = new Intent(ParkedActivity.this,TabbedActivity.class);
                 startActivity(i1);
 
             }
