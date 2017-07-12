@@ -115,37 +115,12 @@ public class Splash extends AppCompatActivity {
 
                 }
 
-//               new Timer().schedule(new TimerTask(){
-//                    public void run() {
-//                        startActivity(new Intent(Splash.this, LoginActivity.class));
-//                    }
-//                }, 3000);
             }
         }
 
-
-
-
-
-//            if (getIntent().getBooleanExtra("EXIT", false))
-//        {
-//            finish();
-//        }
-
-
     }
 
-    /*@Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == 1 && resultCode == RESULT_OK) {
-            Intent i1 = new Intent(Splash.this, LoginActivity.class);
-            startActivity(i1);
-        } else {
 
-        }
-
-
-    }*/
 
     @Override
     protected void onResume() {
