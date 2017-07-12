@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.acer.vale_app.BlankFragment">
+    tools:context="com.example.acer.vale_app.FrameLayoutFragment">
 
     <!-- TODO: Update blank fragment layout -->
     <com.google.android.gms.maps.MapView

@@ -4,14 +4,14 @@
     android:background="#fff"
     android:id="@+id/forth"
     android:layout_height="match_parent"
-    tools:context="com.example.acer.vale_app.Main4Activity">
+    tools:context="com.example.acer.vale_app.ReachedActivity">
 
     <!-- TODO: Update blank fragment layout -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         style="@style/tvstyle"
-        android:id="@+id/ll3"
+        android:id="@+id/ll2"
         android:orientation="horizontal">
         <ImageButton
             android:layout_marginTop="4dp"
@@ -41,29 +41,27 @@
 
     </LinearLayout>
 
-    <fragment
-        android:id="@+id/map"
-        android:layout_below="@+id/ll3"
-        android:layout_above="@+id/btnpickup"
-        android:name="com.google.android.gms.maps.SupportMapFragment"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context="com.example.acer.currentlocationgooglemap.MapsActivity"
-        />
+
 
     <Button
 
         android:textColor="#fff"
         android:textSize="25dp"
-        android:id="@+id/btnpickup"
+        android:id="@+id/btndest"
         android:gravity="center"
-        android:text="Parked Successfully"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         style="@style/btnstyle2"
         />
 
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/ll2"
+        android:id="@+id/fragment"
+        android:layout_above="@+id/btndest"
+        ></FrameLayout>
 
 
 </RelativeLayout>

@@ -8,9 +8,9 @@ package="com.example.acer.vale_app">
 
 <application android:allowBackup="true" android:icon="@mipmap/ic_launcher" android:label="@string/app_name"
     android:supportsRtl="true" android:theme="@style/AppTheme">
-    <activity android:name=".MainActivity" android:screenOrientation="portrait" />
-    <activity android:name=".Main2Activity" android:screenOrientation="portrait" />
-    <activity android:name=".Main3Activity" android:screenOrientation="portrait" />
+    <activity android:name=".LoginActivity" android:screenOrientation="portrait" />
+    <activity android:name=".Login2Activity" android:screenOrientation="portrait" />
+    <activity android:name=".OtpActivity" android:screenOrientation="portrait" />
     <activity android:name=".Splash" android:screenOrientation="portrait">
         <intent-filter>
             <action android:name="android.intent.action.MAIN" />
@@ -19,7 +19,7 @@ package="com.example.acer.vale_app">
         </intent-filter>
     </activity>
     <activity android:name=".TabbedActivity" android:screenOrientation="portrait" />
-    <activity android:name=".Main4Activity" android:screenOrientation="portrait" >
+    <activity android:name=".ReachedActivity" android:screenOrientation="portrait" >
 
     </activity>
 
@@ -28,7 +28,7 @@ package="com.example.acer.vale_app">
     <!-- android:value="AIzaSyCUf3TJsi7zDGwtX27CdAokZg84BvOtirA" -->
 
 
-    <activity android:name="com.example.acer.vale_app.MapsActivity" android:label="@string/title_activity_maps">
+    <activity android:name="com.example.acer.vale_app.ParkedActivity" android:label="@string/title_activity_maps">
 
     </activity>
 

@@ -23,14 +23,14 @@ import com.google.android.gms.maps.model.MarkerOptions;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class FirstFragment extends Fragment implements OnMapReadyCallback {
+public class HomeFragment extends Fragment implements OnMapReadyCallback {
 
     private GoogleMap mGoogleMap;
     private MapView mMapView;
     private View mView;
 
 
-    public FirstFragment() {
+    public HomeFragment() {
         // Required empty public constructor
     }
 
@@ -46,12 +46,12 @@ public class FirstFragment extends Fragment implements OnMapReadyCallback {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        mView= inflater.inflate(R.layout.fragment_first, container, false);
+        mView= inflater.inflate(R.layout.fragment_home, container, false);
         Button btnAccept= (Button) mView.findViewById(R.id.btnaccept);
         btnAccept.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i1=new Intent(getActivity(),Main4Activity.class);
+                Intent i1=new Intent(getActivity(),ReachedActivity.class);
                 startActivity(i1);
             }
         });

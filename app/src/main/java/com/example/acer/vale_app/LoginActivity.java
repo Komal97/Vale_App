@@ -10,7 +10,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public class MainActivity extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity {
     private ImageView iv;
     private TextView tv1,tv2;
     private Button btn;
@@ -18,7 +18,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_login);
         iv= (ImageView) findViewById(R.id.iv);
         tv1= (TextView) findViewById(R.id.tv1);
         tv2= (TextView) findViewById(R.id.tv2);
@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent a1=new Intent(MainActivity.this,Main2Activity.class);
+                Intent a1=new Intent(LoginActivity.this,Login2Activity.class);
                 startActivity(a1);
             }
         });
@@ -38,12 +38,12 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onBackPressed()
     {
-        AlertDialog.Builder dialog=new AlertDialog.Builder(MainActivity.this);
+        AlertDialog.Builder dialog=new AlertDialog.Builder(LoginActivity.this);
         dialog.setMessage("Do you want to exit ?");
         dialog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-               Intent i1=new Intent(MainActivity.this,Splash.class);
+               Intent i1=new Intent(LoginActivity.this,Splash.class);
                 i1.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 i1.putExtra("EXIT", true);
                 startActivity(i1);

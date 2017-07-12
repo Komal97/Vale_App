@@ -22,13 +22,13 @@ public class DeliveredActivity extends AppCompatActivity implements OnMapReadyCa
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_forth);
+        setContentView(R.layout.activity_deliver_reach);
 
-        getSupportFragmentManager().beginTransaction().replace(R.id.fragment,new BlankFragment());
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragment,new FrameLayoutFragment());
 
         FragmentManager mgr=getSupportFragmentManager();
         FragmentTransaction trans=mgr.beginTransaction();
-        trans.replace(R.id.fragment,new BlankFragment());
+        trans.replace(R.id.fragment,new FrameLayoutFragment());
         trans.commit();
 
         btndeliver= (Button) findViewById(R.id.btndest);
