@@ -117,6 +117,40 @@ public class Splash extends AppCompatActivity {
 
             }
         }
+        if (!gps_enabled) {
+            // notify user
+            AlertDialog.Builder dialog = new AlertDialog.Builder(Splash.this);
+            dialog.setTitle("Improve location accurancy?");
+            dialog.setMessage("This app wants to change your device setting:");
+            dialog.setNegativeButton("DENY", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface paramDialogInterface, int paramInt) {
+                    // TODO Auto-generated method stub
+                    finish();
+                }
+            });
+            dialog.setPositiveButton("ALLOW", new DialogInterface.OnClickListener() {
+
+                @Override
+                public void onClick(DialogInterface paramDialogInterface, int paramInt) {
+                    Intent myIntent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
+                    startActivity(myIntent);
+                    flag=true;
+                    //startActivityForResult(myIntent, 1);
+
+
+                }
+            });
+            dialog.show();
+        } else {
+            iv.startAnimation(animation);
+            new Timer().schedule(new TimerTask() {
+                public void run() {
+                    startActivity(new Intent(Splash.this, LoginActivity.class));
+                }
+            }, 3000);
+
+        }
 
     }
 
