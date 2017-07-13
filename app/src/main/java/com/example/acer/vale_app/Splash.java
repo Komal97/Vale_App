@@ -1,12 +1,9 @@
 package com.example.acer.vale_app;
 
-import android.Manifest;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.location.LocationManager;
-import android.os.Build;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.support.v7.app.AlertDialog;
@@ -21,6 +18,7 @@ import java.util.TimerTask;
 public class Splash extends AppCompatActivity {
 
     private ImageView iv;
+    private AlertDialog.Builder dialog;
     private boolean flag = false;
     public static final int PERMISSIONS_MULTIPLE_REQUEST = 123;
 
@@ -30,127 +28,75 @@ public class Splash extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
         iv = (ImageView) findViewById(R.id.image);
+
+        Animation animation = AnimationUtils.loadAnimation(Splash.this, R.anim.movedown);
+
+        iv.startAnimation(animation);
+
+
         LocationManager lm = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
         boolean gps_enabled = false;
+
+
         try {
             gps_enabled = lm.isProviderEnabled(LocationManager.GPS_PROVIDER);
         } catch (Exception ex) {
         }
-        Animation animation = AnimationUtils.loadAnimation(Splash.this, R.anim.movedown);
-        iv.startAnimation(animation);
-
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-
-            if (checkSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION) + checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) + checkSelfPermission(Manifest.permission.ACCESS_COARSE_LOCATION) + checkSelfPermission(Manifest.permission.INTERNET) + checkSelfPermission(Manifest.permission.ACCESS_NETWORK_STATE) == PackageManager.PERMISSION_GRANTED) {
-                if (!gps_enabled) {
-                    // notify user
-
-                    AlertDialog.Builder dialog = new AlertDialog.Builder(Splash.this);
-                    dialog.setTitle("Improve location accurancy?");
-                    dialog.setMessage("This app wants to change your device setting:");
-                    dialog.setNegativeButton("DENY", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface paramDialogInterface, int paramInt) {
-                            // TODO Auto-generated method stub
-                            finish();
-                        }
-                    });
-                    dialog.setPositiveButton("ALLOW", new DialogInterface.OnClickListener() {
-
-                        @Override
-                        public void onClick(DialogInterface paramDialogInterface, int paramInt) {
-                            Intent myIntent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
-                            startActivity(myIntent);
-                            flag = true;
-                            //startActivityForResult(myIntent, 1);
 
 
-                        }
-                    });
-                    dialog.show();
-                } else {
-                    iv.startAnimation(animation);
-                    new Timer().schedule(new TimerTask() {
-                        public void run() {
-                            startActivity(new Intent(Splash.this, LoginActivity.class));
-                        }
-                    }, 3000);
-
-                }
-
-            } else {
-
-                requestPermissions(new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_NETWORK_STATE, Manifest.permission.INTERNET, Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.ACCESS_COARSE_LOCATION}, PERMISSIONS_MULTIPLE_REQUEST);
-                if (!gps_enabled) {
-                    // notify user
-
-                    AlertDialog.Builder dialog = new AlertDialog.Builder(Splash.this);
-                    dialog.setTitle("Improve location accurancy?");
-                    dialog.setMessage("This app wants to change your device setting:");
-                    dialog.setNegativeButton("DENY", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface paramDialogInterface, int paramInt) {
-                            // TODO Auto-generated method stub
-                            finish();
-                        }
-                    });
-                    dialog.setPositiveButton("ALLOW", new DialogInterface.OnClickListener() {
-
-                        @Override
-                        public void onClick(DialogInterface paramDialogInterface, int paramInt) {
-                            Intent myIntent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
-                            startActivity(myIntent);
-                            flag = true;
-                            //startActivityForResult(myIntent, 1);
-
-
-                        }
-                    });
-                    dialog.show();
-                } else {
-                    iv.startAnimation(animation);
-                    new Timer().schedule(new TimerTask() {
-                        public void run() {
-                            startActivity(new Intent(Splash.this, LoginActivity.class));
-                        }
-                    }, 3000);
-
-                }
-
-            }
-        }
-
-        else {
-            if (!gps_enabled) {
+        if (!gps_enabled) {
                 // notify user
 
-                AlertDialog.Builder dialog = new AlertDialog.Builder(Splash.this);
-                dialog.setTitle("Improve location accurancy?");
-                dialog.setMessage("This app wants to change your device setting:");
-                dialog.setNegativeButton("DENY", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface paramDialogInterface, int paramInt) {
-                        // TODO Auto-generated method stub
-                        finish();
-                    }
-                });
-                dialog.setPositiveButton("ALLOW", new DialogInterface.OnClickListener() {
-
-                    @Override
-                    public void onClick(DialogInterface paramDialogInterface, int paramInt) {
-                        Intent myIntent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
-                        startActivity(myIntent);
-
-                        flag = true;
-
-                        //startActivityForResult(myIntent, 1);
 
 
-                    }
-                });
-                dialog.show();
-            } else {
-                iv.startAnimation(animation);
+                    dialog = new AlertDialog.Builder(Splash.this);
+                    dialog.setTitle("Improve location accurancy?");
+                    dialog.setMessage("This app wants to change your device setting:");
+                    dialog.setNegativeButton("DENY", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface paramDialogInterface, int paramInt) {
+                            // TODO Auto-generated method stub
+                            finish();
+                        }
+                    });
+                    dialog.setPositiveButton("ALLOW", new DialogInterface.OnClickListener() {
+
+                        @Override
+                        public void onClick(DialogInterface paramDialogInterface, int paramInt) {
+                            Intent myIntent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
+                            startActivity(myIntent);
+
+                            flag = true;
+
+                            //startActivityForResult(myIntent, 1);
+
+
+                        }
+                    });
+            animation.setAnimationListener(new Animation.AnimationListener() {
+                @Override
+                public void onAnimationStart(Animation animation) {
+
+                }
+
+                @Override
+                public void onAnimationEnd(Animation animation) {
+                    dialog.show();
+                }
+
+                @Override
+                public void onAnimationRepeat(Animation animation) {
+
+                }
+            });
+
+
+
+
+
+            }
+
+            else {
                 new Timer().schedule(new TimerTask() {
                     public void run() {
                         startActivity(new Intent(Splash.this, LoginActivity.class));
@@ -161,7 +107,6 @@ public class Splash extends AppCompatActivity {
         }
 
 
-    }
 
 
 

@@ -23,6 +23,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Locale;
 
 public class ParkedActivity extends FragmentActivity implements OnMapReadyCallback {
 
@@ -73,22 +74,10 @@ public class ParkedActivity extends FragmentActivity implements OnMapReadyCallba
                     LatLng latLng = new LatLng(latitude, longitude);
                     LatLng latLng2 = new LatLng(28.6961009, 77.1527008);
 
-                    Geocoder geocoder = new Geocoder(getApplicationContext());
+                    Geocoder geocoder = new Geocoder(getApplicationContext(), Locale.getDefault());
                     String result = null;
                     try {
 
-                       /* List<Address> addressList=geocoder.getFromLocation(latitude,longitude,1);
-                        StringBuilder str=new StringBuilder();
-                                str.append(addressList.get(0).getAddressLine(0)+",").append(addressList.get(0).getLocality())
-                                        .append(addressList.get(0).getCountryName());
-                                String str1=str.toString();
-
-                        mMap.addMarker(new MarkerOptions().position(latLng).title(str1));
-                        mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng,16.0f));
-
-                        mMap.addMarker(new MarkerOptions().position(latLng2).title("Netaji Subhash Place metro station"));
-                        mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng2,16.0f));
-*/
                         List<Address> addressList = geocoder.getFromLocation(latitude, longitude, 1);
                         if (addressList != null && addressList.size() > 0) {
                             Address address = addressList.get(0);
