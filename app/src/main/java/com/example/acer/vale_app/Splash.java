@@ -1,12 +1,9 @@
 package com.example.acer.vale_app;
 
-import android.Manifest;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.location.LocationManager;
-import android.os.Build;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.support.v7.app.AlertDialog;
@@ -21,6 +18,7 @@ import java.util.TimerTask;
 public class Splash extends AppCompatActivity {
 
     private ImageView iv;
+    private AlertDialog.Builder dialog;
     private boolean flag = false;
     public static final int PERMISSIONS_MULTIPLE_REQUEST = 123;
 
@@ -36,18 +34,19 @@ public class Splash extends AppCompatActivity {
         LocationManager lm = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
         boolean gps_enabled = false;
 
-        try
-        {
+
+        try {
             gps_enabled = lm.isProviderEnabled(LocationManager.GPS_PROVIDER);
+        } catch (Exception ex) {
         }
-         catch (Exception ex)
-         {}
 
 
-             if (!gps_enabled) {
-                    // notify user
+        if (!gps_enabled) {
+                // notify user
 
-                 AlertDialog.Builder dialog = new AlertDialog.Builder(Splash.this);
+
+
+                    dialog = new AlertDialog.Builder(Splash.this);
                     dialog.setTitle("Improve location accurancy?");
                     dialog.setMessage("This app wants to change your device setting:");
                     dialog.setNegativeButton("DENY", new DialogInterface.OnClickListener() {
@@ -63,22 +62,42 @@ public class Splash extends AppCompatActivity {
                         public void onClick(DialogInterface paramDialogInterface, int paramInt) {
                             Intent myIntent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
                             startActivity(myIntent);
+
                             flag = true;
+
                             //startActivityForResult(myIntent, 1);
+
+
                         }
                     });
-                    dialog.show();
-                } else {
-                    iv.startAnimation(animation);
-                    new Timer().schedule(new TimerTask() {
-                        public void run() {
-                            startActivity(new Intent(Splash.this, LoginActivity.class));
-                        }
-                    }, 3000);
+
+            animation.setAnimationListener(new Animation.AnimationListener() {
+                @Override
+                public void onAnimationStart(Animation animation) {
 
                 }
+                @Override
+                public void onAnimationEnd(Animation animation) {
+                    dialog.show();
+                }
+
+                @Override
+                public void onAnimationRepeat(Animation animation) {
+
+                }
+            });
 
             }
+
+            else {
+                new Timer().schedule(new TimerTask() {
+                    public void run() {
+                        startActivity(new Intent(Splash.this, LoginActivity.class));
+                    }
+                }, 3000);
+
+            }
+        }
 
     @Override
     protected void onResume() {
