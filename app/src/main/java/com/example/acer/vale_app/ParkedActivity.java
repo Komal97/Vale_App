@@ -19,10 +19,12 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Locale;
 
 public class ParkedActivity extends FragmentActivity implements OnMapReadyCallback {
 
@@ -73,40 +75,41 @@ public class ParkedActivity extends FragmentActivity implements OnMapReadyCallba
                     LatLng latLng = new LatLng(latitude, longitude);
                     LatLng latLng2 = new LatLng(28.6961009, 77.1527008);
 
-                    Geocoder geocoder = new Geocoder(getApplicationContext());
+                    Geocoder geocoder = new Geocoder(getApplicationContext(), Locale.getDefault());
                     String result = null;
                     try {
 
-                       /* List<Address> addressList=geocoder.getFromLocation(latitude,longitude,1);
-                        StringBuilder str=new StringBuilder();
-                                str.append(addressList.get(0).getAddressLine(0)+",").append(addressList.get(0).getLocality())
-                                        .append(addressList.get(0).getCountryName());
-                                String str1=str.toString();
-
-                        mMap.addMarker(new MarkerOptions().position(latLng).title(str1));
-                        mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng,16.0f));
-
-                        mMap.addMarker(new MarkerOptions().position(latLng2).title("Netaji Subhash Place metro station"));
-                        mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng2,16.0f));
-*/
                         List<Address> addressList = geocoder.getFromLocation(latitude, longitude, 1);
                         if (addressList != null && addressList.size() > 0) {
                             Address address = addressList.get(0);
                             StringBuilder sb = new StringBuilder();
                             for (int i = 0; i < address.getMaxAddressLineIndex(); i++) {
-                                sb.append(address.getAddressLine(i)).append("\n");
+
+                                if (!address.getAddressLine(i).equals("null"))
+                                    sb.append(address.getAddressLine(i)).append(",");
                             }
-                            sb.append(address.getLocality()).append("\n");
-                            sb.append(address.getPostalCode()).append("\n");
-                            sb.append(address.getCountryName());
+                            if (address.getLocality() != null && !address.getLocality().equals("null"))
+                                sb.append(address.getLocality()).append(",");
+                            if (address.getPostalCode() != null && !address.getPostalCode().equals("null"))
+                                sb.append(address.getPostalCode()).append(",");
+                            if (address.getCountryName() != null && !address.getCountryName().equals("null"))
+                                sb.append(address.getCountryName());
+
                             result = sb.toString();
 
-                            mMap.addMarker(new MarkerOptions().position(latLng).title(result));
-                            mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 16.0f));
+                            Marker marker = null;
+                            if(marker!=null)
+                            {
+                                marker.remove();
+                            }
 
-                            mMap.addMarker(new MarkerOptions().position(latLng2).title("Netaji Subhash Place metro station"));
-                            mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng2, 16.0f));
-                        }
+                        mMap.addMarker(new MarkerOptions().position(latLng).title(result));
+                        mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 16.0f));
+
+                        mMap.addMarker(new MarkerOptions().position(latLng2).title("Netaji Subhash Place metro station"));
+                        mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng2, 16.0f));
+
+                    }
 
                     } catch (IOException e) {
                         e.printStackTrace();
@@ -148,13 +151,27 @@ public class ParkedActivity extends FragmentActivity implements OnMapReadyCallba
                             Address address = addressList.get(0);
                             StringBuilder sb = new StringBuilder();
                             for (int i = 0; i < address.getMaxAddressLineIndex(); i++) {
-                                sb.append(address.getAddressLine(i)).append("\n");
+
+                                if (!address.getAddressLine(i).equals("null"))
+                                    sb.append(address.getAddressLine(i)).append(",");
                             }
-                            sb.append(address.getLocality()).append("\n");
-                            sb.append(address.getPostalCode()).append("\n");
-                            sb.append(address.getCountryName());
-                            result = sb.toString();
+                            if(address.getLocality() != null && !address.getLocality().equals("null"))
+                                sb.append(address.getLocality()).append(",");
+                            if(address.getPostalCode() != null && !address.getPostalCode().equals("null"))
+                                sb.append(address.getPostalCode()).append(",");
+                            if(address.getCountryName() != null && !address.getCountryName().equals("null"))
+                                sb.append(address.getCountryName());
+                                result = sb.toString();
+
+                            Marker marker = null;
+                           if(marker!=null)
+                           {
+                               marker.remove();
+                           }
                             mMap.addMarker(new MarkerOptions().position(latLng).title(result));
+
+
+
                             mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 16.0f));
 
                             mMap.addMarker(new MarkerOptions().position(latLng2).title("Netaji Subhash Place metro station"));

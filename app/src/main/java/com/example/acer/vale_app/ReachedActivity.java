@@ -24,6 +24,7 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.io.IOException;
@@ -91,10 +92,7 @@ public class ReachedActivity extends AppCompatActivity implements OnMapReadyCall
 
             }
         });
-//        FragmentManager mgr=getSupportFragmentManager();
-//        FragmentTransaction trans=mgr.beginTransaction();
-//        trans.replace(R.id.fragment,new FrameLayoutFragment());
-//        trans.commit();
+
         btnDest = (Button) findViewById(R.id.btnpickup);
 
         btnDest.setText("REACHED DESTINATION");
@@ -147,12 +145,24 @@ public class ReachedActivity extends AppCompatActivity implements OnMapReadyCall
                             Address address = addresslist.get(0);
                             StringBuilder sb = new StringBuilder();
                             for (int i = 0; i < address.getMaxAddressLineIndex(); i++) {
-                                sb.append(address.getAddressLine(i)).append("\n");
+
+                                if (!address.getAddressLine(i).equals("null"))
+                                    sb.append(address.getAddressLine(i)).append(",");
                             }
-                            sb.append(address.getLocality()).append("\n");
-                            sb.append(address.getPostalCode()).append("\n");
-                            sb.append(address.getCountryName());
+                            if (address.getLocality() != null && !address.getLocality().equals("null"))
+                                sb.append(address.getLocality()).append(",");
+                            if (address.getPostalCode() != null && !address.getPostalCode().equals("null"))
+                                sb.append(address.getPostalCode()).append(",");
+                            if (address.getCountryName() != null && !address.getCountryName().equals("null"))
+                                sb.append(address.getCountryName());
+
                             result = sb.toString();
+
+                            Marker marker = null;
+                            if(marker!=null)
+                            {
+                                marker.remove();
+                            }
                             mMap.addMarker(new MarkerOptions().position(latLng).title(result));
                             mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng,16.0f));
 
@@ -205,12 +215,24 @@ public class ReachedActivity extends AppCompatActivity implements OnMapReadyCall
                             Address address = addresslist.get(0);
                             StringBuilder sb = new StringBuilder();
                             for (int i = 0; i < address.getMaxAddressLineIndex(); i++) {
-                                sb.append(address.getAddressLine(i)).append("\n");
+
+                                if (!address.getAddressLine(i).equals("null"))
+                                    sb.append(address.getAddressLine(i)).append(",");
                             }
-                            sb.append(address.getLocality()).append("\n");
-                            sb.append(address.getPostalCode()).append("\n");
-                            sb.append(address.getCountryName());
+                            if (address.getLocality() != null && !address.getLocality().equals("null"))
+                                sb.append(address.getLocality()).append(",");
+                            if (address.getPostalCode() != null && !address.getPostalCode().equals("null"))
+                                sb.append(address.getPostalCode()).append(",");
+                            if (address.getCountryName() != null && !address.getCountryName().equals("null"))
+                                sb.append(address.getCountryName());
+
                             result = sb.toString();
+
+                            Marker marker = null;
+                            if(marker!=null)
+                            {
+                                marker.remove();
+                            }
                         }
 
                     } catch (IOException e) {
