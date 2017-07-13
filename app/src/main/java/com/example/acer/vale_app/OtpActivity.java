@@ -35,14 +35,18 @@ public class OtpActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent i1=new Intent(OtpActivity.this,Login2Activity.class);
+                i1.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(i1);
+                finish();
             }
         });
         text.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent i1=new Intent(OtpActivity.this,Login2Activity.class);
+                i1.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivityForResult(i1,20);
+                finish();
 
             }
         });
@@ -65,7 +69,9 @@ public class OtpActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
               Intent i1=new Intent(OtpActivity.this,TabbedActivity.class);
+                i1.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(i1);
+                finish();
             }
         });
 
@@ -75,6 +81,8 @@ public class OtpActivity extends AppCompatActivity {
     public void onBackPressed()
     {
         Intent i1=new Intent(OtpActivity.this,Login2Activity.class);
+        i1.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(i1);
+        finish();
     }
 }

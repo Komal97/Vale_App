@@ -1,5 +1,6 @@
 package com.example.acer.vale_app;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
@@ -7,6 +8,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 
 public class TabbedActivity extends AppCompatActivity {
@@ -145,8 +147,22 @@ public class TabbedActivity extends AppCompatActivity {
     @Override
     public void onBackPressed()
     {
-        Intent i1=new Intent(TabbedActivity.this,OtpActivity.class);
-        startActivity(i1);
+
+        AlertDialog.Builder dialog=new AlertDialog.Builder(TabbedActivity.this);
+        dialog.setMessage("Do you want to exit ?");
+        dialog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                finish();
+            }
+        });
+        dialog.setNegativeButton("No", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.cancel();
+            }
+        });
+        dialog.show();
     }
 
 }

@@ -29,21 +29,28 @@ public class Login2Activity extends AppCompatActivity {
         et= (EditText) findViewById(R.id.et);
         cb= (CheckBox) findViewById(R.id.cb);
         btnLogin= (Button) findViewById(R.id.btnLogin);
+
         et.setSelection(et.getText().length());
         cb.setChecked(false);
         btnLogin.setEnabled(false);
+
         ib.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent i1=new Intent(Login2Activity.this,LoginActivity.class);
+                i1.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(i1);
+                finish();
             }
         });
+
         text.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent i1=new Intent(Login2Activity.this,LoginActivity.class);
+                i1.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(i1);
+                finish();
             }
         });
 
@@ -66,7 +73,9 @@ public class Login2Activity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent i2=new Intent(Login2Activity.this,OtpActivity.class);
+                i2.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(i2);
+                finish();
             }
         });
 
@@ -79,6 +88,8 @@ public class Login2Activity extends AppCompatActivity {
     public void onBackPressed()
     {
         Intent i1=new Intent(Login2Activity.this,LoginActivity.class);
+        i1.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(i1);
+        finish();
     }
 }
