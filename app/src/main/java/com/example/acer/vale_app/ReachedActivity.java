@@ -162,7 +162,7 @@ public class ReachedActivity extends AppCompatActivity implements OnMapReadyCall
                             result = sb.toString();
 
                             mMap.clear();
-                            RetrofitDirection direction=new RetrofitDirection(mMap);
+                            RetrofitDirection direction=new RetrofitDirection(mMap,ReachedActivity.this);
                             direction.get_direction_fetch_direction(latLng,latLng2);
 
                             Marker marker = null;
@@ -237,7 +237,7 @@ public class ReachedActivity extends AppCompatActivity implements OnMapReadyCall
 
                             result = sb.toString();
                             mMap.clear();
-                            RetrofitDirection direction=new RetrofitDirection(mMap);
+                            RetrofitDirection direction=new RetrofitDirection(mMap,ReachedActivity.this);
                             direction.get_direction_fetch_direction(latLng,latLng2);
 
                             Marker marker = null;

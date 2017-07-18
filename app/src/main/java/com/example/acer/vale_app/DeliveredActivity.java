@@ -99,7 +99,7 @@ public class DeliveredActivity extends FragmentActivity implements OnMapReadyCal
                             result = sb.toString();
 
                             mMap.clear();
-                            RetrofitDirection direction=new RetrofitDirection(mMap);
+                            RetrofitDirection direction=new RetrofitDirection(mMap,DeliveredActivity.this);
                             direction.get_direction_fetch_direction(latLng,latLng2);
 
 
@@ -170,7 +170,7 @@ public class DeliveredActivity extends FragmentActivity implements OnMapReadyCal
                                 result = sb.toString();
 
                             mMap.clear();
-                            RetrofitDirection direction=new RetrofitDirection(mMap);
+                            RetrofitDirection direction=new RetrofitDirection(mMap,DeliveredActivity.this);
                             direction.get_direction_fetch_direction(latLng,latLng2);
 
 

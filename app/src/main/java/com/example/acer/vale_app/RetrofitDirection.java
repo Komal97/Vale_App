@@ -1,6 +1,9 @@
 package com.example.acer.vale_app;
 
+import android.app.Dialog;
+import android.content.Context;
 import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 
 import com.example.acer.vale_app.DirectionDirectory.Direction;
 import com.google.android.gms.maps.CameraUpdate;
@@ -13,6 +16,7 @@ import com.google.android.gms.maps.model.Polyline;
 import com.google.android.gms.maps.model.PolylineOptions;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.victor.loading.rotate.RotateLoading;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,12 +29,22 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RetrofitDirection {
 
-    private final GoogleMap map;
+    private GoogleMap map;
     private Polyline line;
+    private RotateLoading cusrotateloading;
+    Dialog progressdialog;
     private List<LatLng> list;
+    private  Context context;
 
-    public RetrofitDirection(GoogleMap map) {
+    public RetrofitDirection(GoogleMap map,Context context) {
         this.map = map;
+        this.context=context;
+
+        progressdialog=new Dialog(context);
+        progressdialog.setContentView(R.layout.custom_progress_dialog);
+        progressdialog.setCancelable(false);
+        cusrotateloading=(RotateLoading)progressdialog.findViewById(R.id.rotateloading_register);
+        progressdialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
     }
 
     String baseurl="https://maps.googleapis.com";
@@ -48,6 +62,8 @@ public class RetrofitDirection {
         String destination=destinationLatlng.latitude+","+destinationLatlng.longitude;
 
         Call<Direction> call=retrofitsMap.getDirection("metric",origin,destination);
+        progressdialog.show();
+        cusrotateloading.start();
 
         call.enqueue(new Callback<Direction>() {
             @Override
@@ -77,11 +93,14 @@ public class RetrofitDirection {
                     CameraUpdate cun=CameraUpdateFactory.newCameraPosition(CameraPosition.builder().bearing(pos.bearing).tilt(45f).target(pos.target).zoom(pos.zoom).build());
                     map.animateCamera(cun);
                 }
+            progressdialog.cancel();
+                cusrotateloading.stop();
             }
 
             @Override
             public void onFailure(Call<Direction> call, Throwable t) {
-
+               progressdialog.cancel();
+                cusrotateloading.stop();
             }
         });
         return list;
