@@ -23,6 +23,8 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
+import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
@@ -39,6 +41,7 @@ public class ReachedActivity extends AppCompatActivity implements OnMapReadyCall
     private GoogleMap mMap;
     Dialog otpdialog;
     EditText etotp;
+    private LatLng currentLoc;
     LocationManager locationManager;
 
     //private MapView mMapView;
@@ -46,7 +49,7 @@ public class ReachedActivity extends AppCompatActivity implements OnMapReadyCall
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_parked_reach);
+        setContentView(R.layout.activity_deliver_reach);
 
         //  getSupportFragmentManager().beginTransaction().replace(R.id.fragment,new FrameLayoutFragment());
 
@@ -87,7 +90,7 @@ public class ReachedActivity extends AppCompatActivity implements OnMapReadyCall
             @Override
             public void onClick(View v) {
                 otpdialog.cancel();
-                Intent i1 = new Intent(ReachedActivity.this, ParkedActivity.class);
+                Intent i1 = new Intent(ReachedActivity.this, DeliveredActivity.class);
                 startActivity(i1);
 
             }
@@ -99,7 +102,7 @@ public class ReachedActivity extends AppCompatActivity implements OnMapReadyCall
         btnDest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Intent i1=new Intent(ReachedActivity.this,ParkedActivity.class);
+                // Intent i1=new Intent(ReachedActivity.this,DeliveredActivity.class);
                 //startActivity(i1);
                 otpdialog.show();
 
@@ -158,12 +161,18 @@ public class ReachedActivity extends AppCompatActivity implements OnMapReadyCall
 
                             result = sb.toString();
 
+                            mMap.clear();
+                            RetrofitDirection direction=new RetrofitDirection(mMap);
+                            direction.get_direction_fetch_direction(latLng,latLng2);
+
                             Marker marker = null;
                             if(marker!=null)
                             {
                                 marker.remove();
                             }
-                            mMap.addMarker(new MarkerOptions().position(latLng).title(result));
+
+
+                            mMap.addMarker(new MarkerOptions().position(latLng).title(result).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_VIOLET)));
                             mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng,16.0f));
 
                             mMap.addMarker(new MarkerOptions().position(latLng2).title("Netaji Subhash Place metro station"));
@@ -227,6 +236,9 @@ public class ReachedActivity extends AppCompatActivity implements OnMapReadyCall
                                 sb.append(address.getCountryName());
 
                             result = sb.toString();
+                            mMap.clear();
+                            RetrofitDirection direction=new RetrofitDirection(mMap);
+                            direction.get_direction_fetch_direction(latLng,latLng2);
 
                             Marker marker = null;
                             if(marker!=null)
@@ -239,8 +251,9 @@ public class ReachedActivity extends AppCompatActivity implements OnMapReadyCall
                         e.printStackTrace();
                     }
 
-                    mMap.addMarker(new MarkerOptions().position(latLng).title(result));
+                    mMap.addMarker(new MarkerOptions().position(latLng).title(result).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_VIOLET)));
                     mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng,16));
+
                     mMap.addMarker(new MarkerOptions().position(latLng2).title("Netaji Subhash Place metro station"));
                     mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng2, 16.0f));
 
@@ -268,5 +281,18 @@ public class ReachedActivity extends AppCompatActivity implements OnMapReadyCall
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap=googleMap;
+        mMap.clear();
+
+
+
+
+
+    }
+
+    private  boolean checkReady(){
+        if(mMap==null){
+            return  false;
+        }
+        return true;
     }
 }

@@ -15,27 +15,28 @@ package="com.example.acer.vale_app">
     <activity android:name=".Login2Activity" android:screenOrientation="portrait" />
     <activity android:name=".OtpActivity" android:screenOrientation="portrait" />
     <activity android:name=".Splash" android:screenOrientation="portrait">
-
         <intent-filter>
             <action android:name="android.intent.action.MAIN" />
 
             <category android:name="android.intent.category.LAUNCHER" />
         </intent-filter>
+
     </activity>
     <activity android:name=".TabbedActivity" android:screenOrientation="portrait" />
-    <activity android:name=".ReachedActivity" android:screenOrientation="portrait" />
-        >
+    <activity android:name=".ReachedActivity" android:screenOrientation="portrait" >
+
+    </activity>
+
 
     <meta-data android:name="com.google.android.geo.API_KEY"
         android:value="AIzaSyBb2EA-u5441LezxyBIXoX-bmAvA08Idmo" />
     <!-- android:value="AIzaSyCUf3TJsi7zDGwtX27CdAokZg84BvOtirA" -->
 
 
-    <activity android:name="com.example.acer.vale_app.ParkedActivity" android:label="@string/title_activity_maps">
+    <activity android:name="com.example.acer.vale_app.DeliveredActivity" android:label="@string/title_activity_maps">
 
     </activity>
 
-    <activity android:name=".DeliveredActivity"></activity>
 </application>
 
 
