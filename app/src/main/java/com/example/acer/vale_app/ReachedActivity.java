@@ -98,7 +98,7 @@ public class ReachedActivity extends AppCompatActivity implements OnMapReadyCall
 
         btnDest = (Button) findViewById(R.id.btnpickup);
 
-        btnDest.setText("REACHED DESTINATION");
+        btnDest.setText("Reached Destination");
         btnDest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

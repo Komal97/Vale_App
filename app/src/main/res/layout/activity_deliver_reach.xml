@@ -57,7 +57,7 @@
         android:textSize="25dp"
         android:id="@+id/btnpickup"
         android:gravity="center"
-        android:text="Delivered Successfully"
+        android:textAllCaps="false"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"

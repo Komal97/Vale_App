@@ -18,8 +18,6 @@ public class TabbedActivity extends AppCompatActivity {
     private ViewPagerAdapter adapter;
    // private Button btnAccept;
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
