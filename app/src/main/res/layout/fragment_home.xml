@@ -52,7 +52,7 @@
         android:layout_below="@id/ll"
         style="@style/tvstyle"
         android:textColor="#000"
-        android:text="ABC"
+        android:text=" "
         />
 
     <Button

@@ -61,8 +61,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         style="@style/tvstyle"
-        android:paddingLeft="10dp"
-        android:hint="123456"
+        android:paddingLeft="20dp"
+        android:hint=" 1234"
         android:textSize="23dp"
         android:id="@+id/et"
         android:layout_below="@id/tv3"/>

@@ -18,23 +18,16 @@ import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
-import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
-
 import java.io.IOException;
 import java.util.List;
-
-/**
- * Created by ACER on 21-Jun-17.
- */
 
 public class ReachedActivity extends AppCompatActivity implements OnMapReadyCallback {
     private Button btnDest, btnpick;
@@ -44,14 +37,10 @@ public class ReachedActivity extends AppCompatActivity implements OnMapReadyCall
     private LatLng currentLoc;
     LocationManager locationManager;
 
-    //private MapView mMapView;
-
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_deliver_reach);
-
-        //  getSupportFragmentManager().beginTransaction().replace(R.id.fragment,new FrameLayoutFragment());
 
         otpdialog = new Dialog(ReachedActivity.this);
 
@@ -77,10 +66,8 @@ public class ReachedActivity extends AppCompatActivity implements OnMapReadyCall
 
             @Override
             public void afterTextChanged(Editable s) {
-                if (s.length() == 0) {
-                    btnpick.setEnabled(false);
-                } else
-                    btnpick.setEnabled(true);
+                boolean isReady =etotp.getText().toString().length()>3;
+                btnpick.setEnabled(isReady);
             }
 
         };
@@ -282,10 +269,6 @@ public class ReachedActivity extends AppCompatActivity implements OnMapReadyCall
     public void onMapReady(GoogleMap googleMap) {
         mMap=googleMap;
         mMap.clear();
-
-
-
-
 
     }
 

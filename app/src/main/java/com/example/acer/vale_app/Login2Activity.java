@@ -3,6 +3,9 @@ package com.example.acer.vale_app;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Editable;
+import android.text.InputType;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -30,9 +33,31 @@ public class Login2Activity extends AppCompatActivity {
         cb= (CheckBox) findViewById(R.id.cb);
         btnLogin= (Button) findViewById(R.id.btnLogin);
 
-        et.setSelection(et.getText().length());
         cb.setChecked(false);
         btnLogin.setEnabled(false);
+        cb.setEnabled(false);
+        et.setInputType(InputType.TYPE_CLASS_PHONE);
+        et.setSelection(et.getText().length());
+
+        TextWatcher tw = new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                boolean isReady =et.getText().toString().length()>13;
+                cb.setEnabled(isReady);
+            }
+
+        };
+        et.addTextChangedListener(tw);
 
         ib.setOnClickListener(new View.OnClickListener() {
             @Override

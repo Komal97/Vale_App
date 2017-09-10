@@ -3,6 +3,8 @@ package com.example.acer.vale_app;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -31,6 +33,28 @@ public class OtpActivity extends AppCompatActivity {
         btnLogin= (Button) findViewById(R.id.btnLogin2);
 
         btnLogin.setEnabled(false);
+        cb.setEnabled(false);
+
+        TextWatcher tw = new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                boolean isReady =et.getText().toString().length()>3;
+                cb.setEnabled(isReady);
+            }
+
+        };
+        et.addTextChangedListener(tw);
+
         ib.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -68,15 +92,14 @@ public class OtpActivity extends AppCompatActivity {
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-              Intent i1=new Intent(OtpActivity.this,TabbedActivity.class);
+                Intent i1=new Intent(OtpActivity.this,TabbedActivity.class);
                 i1.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(i1);
                 finish();
             }
         });
-
-
     }
+
     @Override
     public void onBackPressed()
     {
